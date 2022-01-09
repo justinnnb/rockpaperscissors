@@ -1,0 +1,30 @@
+.gamearea {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+
+}
+
+
+.hands {
+    border-color: red;
+    padding: 25px;
+}
+
+#rock {
+    background-color: red;
+}
+
+#paper {
+    background-color: blue;
+}
+
+#scissors {
+    background-color: green;
+}
+
+#results {
+    display: flex;
+    justify-content: left;
+    height: 100px;
+}

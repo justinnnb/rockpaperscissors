@@ -1,29 +1,36 @@
-let computerSelection = ["Rock", "Paper", "Scissors"];
-let playerSelection;
+let hands = ["Rock", "Paper", "Scissors"];
 let computerHand;
-let playerHand;
 
-function computerPlay() {
-    computerHand = computerSelection[Math.floor(Math.random() * 3)];
+
+    
+document.getElementById('rock').addEventListener("click", function() {
+    game("Rock");
+});
+
+document.getElementById('paper').addEventListener("click", function() {
+    game("Paper");
+});
+
+document.getElementById('scissors').addEventListener("click", function() {
+    game("Scissors");
+});
+
+function computerPlay() { // To generate Computer's Hand for the round
+    computerHand = hands[Math.floor(Math.random() * 3)];
 }
 
-function playerPlay() {
-    playerHand = plgayerSelection[Math.floor(Math.random() * 3)];
-}    
-function game() {
-    for (let playRound = 0; playRound < 5; playRound++) {
-    computerPlay(computerSelection);
-    prompt("Pick your hand:", playerSelection);
-    if (computerSelection === playerSelection) {
-    console.log("It's a draw!");
-    } else if ((playerHand === "Rock" && computerHand === "{Scissors}" ) || 
-               (playerHand === "Scissors" && computerHand === "Paper" ) || 
-               (playerHand === "Paper" && computerHand === "Rock" )){
-        console.log("Player chose " +playerHand+ " while computer chose " +computerHand+ "!");
-        console.log("You win! " +playerHand +" beats " +computerHand +"!");
-    } else {
-        console.log("Player chose " +playerHand+ " while computer chose " +computerHand+ "!");
-        console.log("You lose! " +computerHand +" beats " +playerHand +"!");
-    }
-    }
-    }
+function game(playerHand) { //
+        computerPlay(computerHand);
+        if (computerHand === playerHand) {
+            alert("Both players chose " +playerHand+ "!");
+            alert("It's a draw!");
+        } else if (
+                (playerHand === "Rock" && computerHand === "{Scissors}" ) || 
+                (playerHand === "Scissors" && computerHand === "Paper" ) || 
+                (playerHand === "Paper" && computerHand === "Rock" )) 
+                {
+            alert("Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou win! " +playerHand +" beats " +computerHand +"!");
+        } else {
+            alert("Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou lose! " +computerHand +" beats " +playerHand +"!");
+        }
+}

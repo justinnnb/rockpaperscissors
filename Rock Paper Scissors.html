@@ -2,39 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="rps.js"
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <script>
-    
-    let computerSelection = ["Rock", "Paper", "Scissors"];
-    let computerHand;
 
-    function computerPlay() { // To generate Computer's Hand for the round
-        computerHand = computerSelection[Math.floor(Math.random() * 3)];
-    }
 
-    function game() { //
-        for (let playRound = 0; playRound < 5; playRound++) {
-            computerPlay(computerHand);
-            let playerHand = prompt("Pick your hand:");
-            if (computerHand === playerHand) {
-                console.log("It's a draw!");
-            } else if (
-                    (playerHand === "Rock" && computerHand === "{Scissors}" ) || 
-                    (playerHand === "Scissors" && computerHand === "Paper" ) || 
-                    (playerHand === "Paper" && computerHand === "Rock" )){
-                console.log("Player chose " +playerHand+ " while computer chose " +computerHand+ "!");
-                console.log("You win! " +playerHand +" beats " +computerHand +"!");
-            } else {
-                console.log("Player chose " +playerHand+ " while computer chose " +computerHand+ "!");
-                console.log("You lose! " +computerHand +" beats " +playerHand +"!");
-            }
-        }
-    }
-    game();
-    </script>
 </body>
 </html>

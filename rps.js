@@ -33,14 +33,27 @@ function playerlose() {
 function computerPlay() { // To generate Computer's Hand for the round
     computerHand = hands[Math.floor(Math.random() * 3)];
 };
+let playerpoint = 0;
+let computerpoint = 0;
 
 function game(playerHand) { //
+
+    function playerAddScore()  {
+        playerpoint++;
+        let score = "Player: ";
+        document.getElementById('playerscore').innerHTML = score + playerpoint;
+    };
+
+    function computerAddScore()  {
+        computerpoint++;
+        let score = "Computer: ";
+        document.getElementById('computerscore').innerHTML = score + computerpoint;
+    };
         
     const winResult = "Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou win! " +playerHand +" beats " +computerHand +"!";
     const loseResult = "Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou lose! " +computerHand +" beats " +playerHand +"!";
     const drawResult = "Both players chose " +playerHand+ "! \nIt's a draw!";
     function playerwin() {
-
         let ul = document.getElementById('results');
         let li = document.createElement('li');
         li.appendChild(document.createTextNode("Win!"));
@@ -65,10 +78,7 @@ function game(playerHand) { //
         document.getElementById('roundlog').appendChild(li);
     };
 
-    let playescore = 0;
-    let computerscore = 0;
-    
-        computerPlay(computerHand);
+    computerPlay(computerHand);
         if (computerHand === playerHand) {
             alert(drawResult);
             playerdraw();
@@ -81,11 +91,20 @@ function game(playerHand) { //
             alert(winResult);
             playerwin();
             winLog();
-            document.getElementById('playerscore').innerHTML += "playerscore + 1";
+            playerAddScore();
         } else {
             alert(loseResult);
             playerlose();
             loseLog();
+            computerAddScore();
         };
+
+    if (playerpoint > 4) {
+        alert("Player wins!");
+        
+    } else if (computerpoint > 4) {
+        alert("Computer wins!");
+    }
 };
+
 

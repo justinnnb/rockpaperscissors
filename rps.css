@@ -20,6 +20,14 @@
     justify-content: center;
 }
 
+#playerscore {
+    padding: 25px;
+}
+
+#computerscore {
+    padding: 25px;
+}
+
 #paper {
     background-color: blue;
 }

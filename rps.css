@@ -1,7 +1,7 @@
 .gamearea {
     display: flex;
-    justify-content: space-between;
-    padding: 100px;
+    justify-content: space-around;
+    padding: 25px;
 
 }
 
@@ -15,6 +15,11 @@
     background-color: red;
 }
 
+#scoreboard {
+    display: flex;
+    justify-content: center;
+}
+
 #paper {
     background-color: blue;
 }
@@ -23,8 +28,15 @@
     background-color: green;
 }
 
-#results {
-    display: flex;
-    justify-content: left;
-    height: 100px;
+#roundresult {
+    background-color: khaki;
+    height: 200px;
+    justify-content: flex-start;
+}
+
+#roundlog {
+    background-color: grey;
+    height: auto;
+    height: 400px;
+
 }

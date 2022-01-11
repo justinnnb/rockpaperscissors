@@ -1,8 +1,5 @@
 let hands = ["Rock", "Paper", "Scissors"];
 let computerHand;
-const list = document.createElement('ul');
-const ul = document.getElementById('results');
-const br = document.createElement("br");
 
 
     
@@ -18,26 +15,19 @@ document.getElementById('scissors').addEventListener("click", function() {
     game("Scissors");
     
 });
+function playerdraw() { // 
+    let ul = document.getElementById('results');
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode("Draw!"));
+    ul.appendChild(li);//add item to the li
 
-function playerdraw() {
-    list.textContent +="Draw!";
-    
-    ul.appendChild(list);//add item to the list
-    ul.appendChild(br);
-};
-
-function playerwin() {
-    list.textContent +="Player won!";
-    
-    ul.appendChild(list);//add item to the list
-    ul.appendChild(br);
 };
 
 function playerlose() {
-    list.textContent +="Player lost!";
-    
-    ul.appendChild(list);//add item to the list
-    ul.appendChild(br);
+    let ul = document.getElementById('results');
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode("Lose!"));
+    ul.appendChild(li);//add item to the li
 };
 
 function computerPlay() { // To generate Computer's Hand for the round
@@ -45,19 +35,57 @@ function computerPlay() { // To generate Computer's Hand for the round
 };
 
 function game(playerHand) { //
+        
+    const winResult = "Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou win! " +playerHand +" beats " +computerHand +"!";
+    const loseResult = "Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou lose! " +computerHand +" beats " +playerHand +"!";
+    const drawResult = "Both players chose " +playerHand+ "! \nIt's a draw!";
+    function playerwin() {
+
+        let ul = document.getElementById('results');
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode("Win!"));
+        ul.appendChild(li);//add item to the li
+    };
+
+    function winLog() {
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode(winResult));
+        document.getElementById('roundlog').appendChild(li);
+    };
+
+    function loseLog() {
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode(loseResult));
+        document.getElementById('roundlog').appendChild(li);
+    };
+
+    function drawLog() {
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode(drawResult ));
+        document.getElementById('roundlog').appendChild(li);
+    };
+
+    let playescore = 0;
+    let computerscore = 0;
+    
         computerPlay(computerHand);
         if (computerHand === playerHand) {
-            alert("Both players chose " +playerHand+ "! \nIt's a draw!");
+            alert(drawResult);
             playerdraw();
+            drawLog();
         } else if (
                 (playerHand === "Rock" && computerHand === "Scissors" ) || 
                 (playerHand === "Scissors" && computerHand === "Paper" ) || 
                 (playerHand === "Paper" && computerHand === "Rock" )) 
                 {
-            alert("Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou win! " +playerHand +" beats " +computerHand +"!");
+            alert(winResult);
             playerwin();
+            winLog();
+            document.getElementById('playerscore').innerHTML += "playerscore + 1";
         } else {
-            alert("Player chose " +playerHand+ " while computer chose " +computerHand+ "! \nYou lose! " +computerHand +" beats " +playerHand +"!");
+            alert(loseResult);
             playerlose();
-        }
+            loseLog();
+        };
 };
+
